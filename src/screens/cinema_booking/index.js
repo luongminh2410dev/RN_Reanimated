@@ -46,11 +46,13 @@ const FilmItem = forwardRef((props, ref) => {
     const filmItemStyles = useAnimatedStyle(() => {
         // scroll item
         const translateY = interpolate(filmItemAnim.value, [index - 1, index, index + 1], [40, 0, 40]);
+        const opacity = interpolate(filmItemAnim.value, [index - 1, index, index + 1], [0.8, 1, 0.8]);
         // button active
         const widthItem = interpolate(activeBtnAnim.value, [0, 1], [width * 0.7, width]);
         const translateX = interpolate(activeBtnAnim.value, [0, 1], [0, index == 0 ? - 32 : -64]);
         return {
             width: widthItem,
+            opacity,
             transform: [{ translateX }, { translateY }]
         }
     })

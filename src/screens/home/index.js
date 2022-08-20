@@ -8,7 +8,7 @@ const animations = [
     { name: 'Round BottomTabs', stack: 'RoundBottomTabs', image: require('../../assets/round_bottom_tabs.png') },
     { name: 'Interaction Concept', stack: 'InteractionConcept', image: require('../../assets/interaction_concept.png') },
     { name: 'Cinema Booking', stack: 'CinemaBooking', image: require('../../assets/cinema_booking.png') },
-    { name: 'SVG Bottom Tabs', stack: 'SVGBottomTabs', image: require('../../assets/cinema_booking.png') },
+    { name: 'SVG Bottom Tabs', stack: 'SVGBottomTabs', image: require('../../assets/svg_bottom_tabs.png') },
 ]
 const keyExtractor = (item, index) => `animation_${index}`
 const Home = (props) => {
