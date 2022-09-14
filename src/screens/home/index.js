@@ -9,6 +9,7 @@ const animations = [
     { name: 'Interaction Concept', stack: 'InteractionConcept', image: require('../../assets/interaction_concept.png') },
     { name: 'Cinema Booking', stack: 'CinemaBooking', image: require('../../assets/cinema_booking.png') },
     { name: 'SVG Bottom Tabs', stack: 'SVGBottomTabs', image: require('../../assets/svg_bottom_tabs.png') },
+    { name: 'Shoes Shopping', stack: 'ShoesShopping', image: require('../../assets/shoes_shopping.png') },
 ]
 const keyExtractor = (item, index) => `animation_${index}`
 const Home = (props) => {
