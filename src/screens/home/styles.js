@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
         width: width / 2 - 24,
         marginBottom: 12,
         marginRight: 12,
-        backgroundColor: 'white',
         borderRadius: 4,
         shadowColor: "#000",
         shadowOffset: {
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
     animation_name: {
         marginTop: 4,
         fontSize: 15,
-        color: 'black'
     }
 })
 export default styles
