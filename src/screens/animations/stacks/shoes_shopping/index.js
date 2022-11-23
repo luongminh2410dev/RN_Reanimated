@@ -4,17 +4,17 @@ import styles from './styles'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 const list_shoes = [
-    { name: 'Alpha Savage', cost: 12.995, image: require('../../assets/shoes_1.jpeg'), background_color: '#dd4b4c' },
-    { name: 'Air max 97', cost: 11.897, image: require('../../assets/shoes_2.png'), background_color: '#f0d800' },
-    { name: 'Air Presto', cost: 12.995, image: require('../../assets/shoes_5.png'), background_color: '#616065' },
-    { name: 'KD13 EP', cost: 12.995, image: require('../../assets/shoes_3.png'), background_color: '#aac877' },
-    { name: 'Jordan 1', cost: 9.999, image: require('../../assets/shoes_4.png'), background_color: '#2c3049' },
+    { name: 'Alpha Savage', cost: 12.995, image: require('../../../../assets/shoes_1.jpeg'), background_color: '#dd4b4c' },
+    { name: 'Air max 97', cost: 11.897, image: require('../../../../assets/shoes_2.png'), background_color: '#f0d800' },
+    { name: 'Air Presto', cost: 12.995, image: require('../../../../assets/shoes_5.png'), background_color: '#616065' },
+    { name: 'KD13 EP', cost: 12.995, image: require('../../../../assets/shoes_3.png'), background_color: '#aac877' },
+    { name: 'Jordan 1', cost: 9.999, image: require('../../../../assets/shoes_4.png'), background_color: '#2c3049' },
 ]
 const list_shoes_options = [
-    { name: 'KD 13 White Navy', price: 8.249, image: require('../../assets/shoes_6.png') },
-    { name: 'Air Zoom Pegasus', price: 9.129, image: require('../../assets/shoes_7.png') },
-    { name: 'KD 13 EP', price: 9.129, image: require('../../assets/shoes_3.png') },
-    { name: 'Air Presto', price: 18.129, image: require('../../assets/shoes_5.png') },
+    { name: 'KD 13 White Navy', price: 8.249, image: require('../../../../assets/shoes_6.png') },
+    { name: 'Air Zoom Pegasus', price: 9.129, image: require('../../../../assets/shoes_7.png') },
+    { name: 'KD 13 EP', price: 9.129, image: require('../../../../assets/shoes_3.png') },
+    { name: 'Air Presto', price: 18.129, image: require('../../../../assets/shoes_5.png') },
 ]
 const filters = ['All', 'Air Max', 'Presto', 'Huarache', 'Jordan', 'Air Zoom'];
 const keyFilterExtractor = (item, index) => `filter_${index}`;

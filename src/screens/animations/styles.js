@@ -1,11 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingLeft: 12,
     },
-    animation_item: {
+    list_animation: {
+        width: '100%',
         flex: 1,
+    },
+    list_animation_container: {
+        paddingVertical: 12,
+    },
+    animation_item: {
+        width: width / 2 - 24,
+        marginBottom: 12,
         marginRight: 12,
         borderRadius: 4,
         shadowColor: "#000",
@@ -18,16 +27,18 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     animation_btn: {
-        paddingVertical: 50,
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        padding: 8,
     },
     animation_img: {
         width: '100%',
         height: 100,
     },
     animation_name: {
-        fontSize: 16,
+        marginTop: 4,
+        fontSize: 15,
     }
 })
 export default styles

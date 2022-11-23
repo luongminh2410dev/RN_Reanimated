@@ -6,11 +6,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 const { width, height } = Dimensions.get('screen');
 const list_film = [
-    { name: 'Dune', image: require('../../assets/dune_film.jpg') },
-    { name: 'Captain Marvel', image: require('../../assets/marvel_film.png') },
-    { name: 'Aquaman', image: require('../../assets/aquaman_film.png') },
-    { name: 'Minions: The rise of Gru ', image: require('../../assets/minions_film.jpeg') },
-    { name: 'The lord of the rings', image: require('../../assets/ring_film.jpeg') },
+    { name: 'Dune', image: require('../../../../assets/dune_film.jpg') },
+    { name: 'Captain Marvel', image: require('../../../../assets/marvel_film.png') },
+    { name: 'Aquaman', image: require('../../../../assets/aquaman_film.png') },
+    { name: 'Minions: The rise of Gru ', image: require('../../../../assets/minions_film.jpeg') },
+    { name: 'The lord of the rings', image: require('../../../../assets/ring_film.jpeg') },
 ]
 const FILM_ITEM_WIDTH = (width * 0.7) + 32;
 const AnimatedImage = Animated.createAnimatedComponent(Image);

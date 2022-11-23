@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Switch, Text, View } from 'react-native'
-import Animated, { interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import styled, { withTheme } from 'styled-components'
-import Storage from '../../utils/storage'
-import { lightTheme, darkTheme } from '../../utils/theme'
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+import { withTheme } from 'styled-components'
+import Storage from '../../../../utils/storage'
+import { darkTheme, lightTheme } from '../../../../utils/theme'
 import styles from './styles'
 
 const AnimatedText = Animated.createAnimatedComponent(Text);

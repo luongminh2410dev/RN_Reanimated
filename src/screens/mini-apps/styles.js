@@ -4,10 +4,14 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingLeft: 12,
     },
+    list_app: {
+        flex: 1,
+    },
     animation_item: {
         flex: 1,
         marginRight: 12,
         borderRadius: 4,
+        backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
