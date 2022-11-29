@@ -96,8 +96,9 @@ const Screen1 = ({ navigation }) => {
     }
 
     const onGestureEvent = useAnimatedGestureHandler({
-        onStart: () => {
+        onStart: (event) => {
             activeGraphAnim.value = true;
+            graphX.value = event.x;
         },
         onActive: (event) => {
             graphX.value = event.x;
