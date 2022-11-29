@@ -1,8 +1,10 @@
 import * as shape from 'd3-shape'
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
-import { Alert, Image, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { PanGestureHandler } from 'react-native-gesture-handler'
 import LinearGradient from 'react-native-linear-gradient'
-import Animated, { FadeInDown, FadeInRight, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+import Animated, { FadeInDown, FadeInRight, interpolateColor, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
+import { getYForX, parse, ReText } from 'react-native-redash'
 import Svg, { Path, Rect } from 'react-native-svg'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
@@ -40,22 +42,6 @@ const estimateValue = [40, 60, 40, 30, 50, 90, 60, 40];
 const SVG_HEIGHT = 240;
 const PATH_HEIGHT = SVG_HEIGHT / 2;
 const PATH_WIDTH = Metrics.DEVICE_WIDTH - Metrics.HOME_MARGIN_ITEM * 2;
-// const path = shape.line().x(d => d.x).y(d => d.y).curve(shape.curveBasis)([
-//     { x: -PATH_WIDTH * 2, y: PATH_HEIGHT },
-//     { x: 0, y: PATH_HEIGHT * 0.6 },
-//     { x: 24, y: PATH_HEIGHT * 0.6 },
-//     { x: PATH_WIDTH * (1 / 8), y: PATH_HEIGHT * 0.4 },
-//     { x: PATH_WIDTH * (2 / 8), y: PATH_HEIGHT * 0.6 },
-//     { x: PATH_WIDTH * (3 / 8), y: PATH_HEIGHT * 0.7 },
-//     { x: PATH_WIDTH * (4 / 8), y: PATH_HEIGHT * 0.5 },
-//     { x: PATH_WIDTH * (5 / 8), y: PATH_HEIGHT * 0.1 },
-//     { x: PATH_WIDTH * (6 / 8), y: PATH_HEIGHT * 0.4 },
-//     { x: PATH_WIDTH * (7 / 8), y: PATH_HEIGHT * 0.6 },
-//     { x: PATH_WIDTH - 24, y: PATH_HEIGHT * 0.6 },
-//     { x: PATH_WIDTH, y: PATH_HEIGHT * 0.6 },
-//     { x: PATH_WIDTH * 2, y: PATH_HEIGHT },
-// ]);
-
 const path = shape.line().x(d => d.x).y(d => d.y).curve(shape.curveBasis)([
     { x: -100, y: PATH_HEIGHT },
     { x: 24, y: PATH_HEIGHT * (1 - estimateValue[0] / 100) },
@@ -68,6 +54,7 @@ const path = shape.line().x(d => d.x).y(d => d.y).curve(shape.curveBasis)([
     { x: 24 + PATH_WIDTH * (7 / 8), y: PATH_HEIGHT * (1 - estimateValue[7] / 100) },
     { x: PATH_WIDTH + 100, y: PATH_HEIGHT },
 ]);
+const pathParsed = parse(path);
 
 const estimate_point = ['0k', '128k', '512k', '2m', '4m', '6m', '8m', '10m'];
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
@@ -75,6 +62,9 @@ const Screen1 = ({ navigation }) => {
     const [isFavorite, setFavorite] = useState(false);
     const [isConnected, setConnected] = useState(false);
     const connectAnim = useSharedValue(0);
+    const graphX = useSharedValue(0);
+    const activeGraphAnim = useSharedValue(false);
+    const graphValueAnim = useSharedValue('0 ms');
 
     const refCountUpTimmer = useRef();
 
@@ -104,6 +94,31 @@ const Screen1 = ({ navigation }) => {
     const navigateToListConnection = () => {
         navigation.navigate('Screen2')
     }
+
+    const onGestureEvent = useAnimatedGestureHandler({
+        onStart: () => {
+            activeGraphAnim.value = true;
+        },
+        onActive: (event) => {
+            graphX.value = event.x;
+            graphValueAnim.value = `${Math.floor((getYForX(pathParsed, graphX.value) / PATH_HEIGHT) * 200)} ms`;
+        },
+        onEnd: () => {
+            activeGraphAnim.value = false;
+        },
+    })
+
+    const cursorAnimStyles = useAnimatedStyle(() => {
+        const translateX = graphX.value - 6;
+        const translateY = (getYForX(pathParsed, graphX.value) - 6) || 0;
+        return {
+            transform: [
+                { translateX },
+                { translateY },
+                { scale: withSpring(activeGraphAnim.value ? 1 : 0) }
+            ],
+        }
+    })
 
     return (
         <View style={styles.container}>
@@ -167,10 +182,19 @@ const Screen1 = ({ navigation }) => {
                                 fill="#e5fe46"
                             />
                         </Svg>
+                        <PanGestureHandler onGestureEvent={onGestureEvent}>
+                            <Animated.View style={[styles.signal_cursor_container, { height: PATH_HEIGHT }]}>
+                                <Animated.View style={[styles.signal_cursor, cursorAnimStyles]}>
+                                    <View style={styles.cursor_value}>
+                                        <ReText style={styles.cursor_value_txt} text={graphValueAnim} />
+                                    </View>
+                                    <View style={styles.cursor_box} />
+                                </Animated.View>
+                            </Animated.View>
+                        </PanGestureHandler>
                     </View>
                     <View style={[styles.signal_absolute, { bottom: 24 }]}>
-                        {/* <View style={{ width: 4, height: 100, backgroundColor: 'red' }}></View> */}
-                        <View style={styles.signal_cursor}>
+                        <View style={styles.signal_scale}>
                             {estimate_point.map((i, idx) => {
                                 return (
                                     <Text key={idx} style={{ fontWeight: '600', color: '#131113' }}>{i}</Text>

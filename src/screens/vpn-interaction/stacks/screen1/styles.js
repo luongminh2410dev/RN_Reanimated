@@ -109,12 +109,44 @@ const styles = StyleSheet.create({
         color: '#a5a2a6',
         fontWeight: '500'
     },
+    // 
+    signal_cursor_container: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start'
+    },
+    signal_cursor: {
+        position: 'relative',
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    cursor_value: {
+        position: 'absolute',
+        top: -40,
+        paddingVertical: 4,
+        paddingHorizontal: 8,
+        backgroundColor: '#4b4b4b',
+        borderRadius: 12,
+    },
+    cursor_value_txt: {
+        fontSize: 16,
+        color: 'white'
+    },
+    cursor_box: {
+        width: 12,
+        height: 12,
+        backgroundColor: '#fefefe'
+    },
+    // 
     signal_absolute: {
         position: 'absolute',
         width: '100%',
         paddingHorizontal: 24,
     },
-    signal_cursor: {
+    signal_scale: {
         flexDirection: "row",
         justifyContent: 'space-between',
         alignItems: "center",

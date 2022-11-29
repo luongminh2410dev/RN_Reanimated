@@ -36,9 +36,7 @@ const ConnectionItem = (props) => {
         setFavorite(!isFavorite);
     }
 
-    const onConnectionItemPress = () => {
-        navigation.navigate('Screen2', { connection: item })
-    }
+    const onConnectionItemPress = () => { }
 
     return (
         <Animated.View
