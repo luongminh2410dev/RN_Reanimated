@@ -1,13 +1,12 @@
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './styles'
+import React, { useEffect, useRef, useState } from 'react';
+import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import styles from './styles';
 
 const { width, height } = Dimensions.get('screen');
 
 const DISPLAY_WIDTH = width - 24;
 const DISPLAY_HEIGHT = 150;
-// const phrases = ['Cậu', 'Pháp', 'đi', 'ấy', 'đang', 'đến', 'từ', 'nấu ăn'];
 
 const phrases = [
     { id: 0, content: 'Cậu' },
