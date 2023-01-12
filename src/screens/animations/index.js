@@ -12,6 +12,7 @@ const animations = [
     { name: 'SVG Bottom Tabs', stack: 'SVGBottomTabs', image: require('../../assets/svg_bottom_tabs.png') },
     { name: 'Shoes Shopping', stack: 'ShoesShopping', image: require('../../assets/shoes_shopping.png') },
     { name: 'Dark Mode', stack: 'DarkMode', image: require('../../assets/shoes_shopping.png') },
+    { name: 'Pairing Phrase', stack: 'PairingPhrase', image: require('../../assets/shoes_shopping.png') },
 ]
 const keyExtractor = (item, index) => `animation_${index}`
 const Animations = (props) => {

@@ -13,18 +13,18 @@ const recentConnections = [
     { id: 1, name: 'Chinsu-1.1', speed: '2.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2000px-Flag_of_Vietnam.svg.png', isFavorite: false },
 ];
 
-// const connections = [
-//     { id: 1, name: 'Austria Connect', speed: '5.74mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/255px-Flag_of_Austria.svg.png', isFavorite: false },
-//     { id: 2, name: 'United State_LA', speed: '6.25mb/s', icon: 'https://cdn.pixabay.com/photo/2017/03/14/21/00/american-flag-2144392__340.png', isFavorite: false },
-//     { id: 3, name: 'Belgium_NTV', speed: '5.28mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/1182px-Flag_of_Belgium.svg.png', isFavorite: false },
-//     { id: 4, name: 'US_California', speed: '4.45mb/s', icon: 'https://cdn.pixabay.com/photo/2017/03/14/21/00/american-flag-2144392__340.png', isFavorite: false },
-//     { id: 5, name: 'France2-Net', speed: '6.10mb/s', icon: 'https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg', isFavorite: false },
-//     { id: 6, name: 'Portugal-PVP', speed: '4.40mb/s', icon: 'https://img.freepik.com/free-vector/illustration-portugal-flag_53876-18170.jpg?auto=format&h=200', isFavorite: true },
-//     { id: 7, name: 'Japan-JNet', speed: '6.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png', isFavorite: false },
-//     { id: 8, name: 'Cambodia 2.0', speed: '1.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/800px-Flag_of_Cambodia.svg.png?20200818191502', isFavorite: false },
-//     { id: 9, name: 'China_Net', speed: '3.33mb/s', icon: 'https://www.countryflags.com/wp-content/uploads/china-flag-png-large.png', isFavorite: false },
-//     { id: 10, name: 'Chinsu-2.1', speed: '3.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2000px-Flag_of_Vietnam.svg.png', isFavorite: true },
-// ]
+const connections = [
+    { id: 1, name: 'Austria Connect', speed: '5.74mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/255px-Flag_of_Austria.svg.png', isFavorite: false },
+    { id: 2, name: 'United State_LA', speed: '6.25mb/s', icon: 'https://cdn.pixabay.com/photo/2017/03/14/21/00/american-flag-2144392__340.png', isFavorite: false },
+    { id: 3, name: 'Belgium_NTV', speed: '5.28mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/1182px-Flag_of_Belgium.svg.png', isFavorite: false },
+    { id: 4, name: 'US_California', speed: '4.45mb/s', icon: 'https://cdn.pixabay.com/photo/2017/03/14/21/00/american-flag-2144392__340.png', isFavorite: false },
+    { id: 5, name: 'France2-Net', speed: '6.10mb/s', icon: 'https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg', isFavorite: false },
+    { id: 6, name: 'Portugal-PVP', speed: '4.40mb/s', icon: 'https://img.freepik.com/free-vector/illustration-portugal-flag_53876-18170.jpg?auto=format&h=200', isFavorite: true },
+    { id: 7, name: 'Japan-JNet', speed: '6.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png', isFavorite: false },
+    { id: 8, name: 'Cambodia 2.0', speed: '1.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/800px-Flag_of_Cambodia.svg.png?20200818191502', isFavorite: false },
+    { id: 9, name: 'China_Net', speed: '3.33mb/s', icon: 'https://www.countryflags.com/wp-content/uploads/china-flag-png-large.png', isFavorite: false },
+    { id: 10, name: 'Chinsu-2.1', speed: '3.10mb/s', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2000px-Flag_of_Vietnam.svg.png', isFavorite: true },
+]
 
 const ConnectionItem = (props) => {
     const { item, index, currentActive } = props;
@@ -73,15 +73,15 @@ const ConnectionItem = (props) => {
 
 const keyExtractor = (item, index) => `connection_${index}_${Math.random()}`;
 const Screen2 = ({ navigation }) => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(connections);
     const [currentActive, setCurrentActive] = useState(0);
     const [typeList, setTypeList] = useState(0);
-    const refConnections = useRef([]);
+    const refConnections = useRef(connections);
 
     useEffect(() => {
-        const connections = JSON.parse(Storage.getString('connections'));
-        setData(connections);
-        refConnections.current = [...connections];
+        // const connections = JSON.parse(Storage.getString('connections'));
+        // setData(connections);
+        // refConnections.current = [...connections];
     }, [])
 
     const renderItem = ({ item, index }) => (

@@ -2,18 +2,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Feather from 'react-native-vector-icons/Feather';
+import Octicons from 'react-native-vector-icons/Octicons';
 import { ThemeProvider } from 'styled-components';
 import Animations from './screens/animations';
 import AbsoluteButton from './screens/animations/stacks/absolute_button';
 import CinemaBooking from './screens/animations/stacks/cinema_booking';
 import DarkMode from './screens/animations/stacks/dark_mode';
 import InteractionConcept from './screens/animations/stacks/interaction_concept';
+import PairingPhrase from './screens/animations/stacks/pairing-phrase';
 import RoundBottomTabs from './screens/animations/stacks/round_bottom_tabs';
 import ShoesShopping from './screens/animations/stacks/shoes_shopping';
 import SVGBottomTabs from './screens/animations/stacks/svg_bottom_tabs';
@@ -68,6 +69,7 @@ const App = () => {
                         <Stack.Screen name="SVGBottomTabs" component={SVGBottomTabs} />
                         <Stack.Screen name="ShoesShopping" component={ShoesShopping} options={{ headerShown: false }} />
                         <Stack.Screen name="DarkMode" component={DarkMode} />
+                        <Stack.Screen name="PairingPhrase" component={PairingPhrase} />
                     </Stack.Group>
                 </Stack.Navigator>
             </ThemeProvider>
